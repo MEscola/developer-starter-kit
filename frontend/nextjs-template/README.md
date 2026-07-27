@@ -1,4 +1,4 @@
-# Next.js Frontend Template
+# Next.js Frontend Template -v1
 
 Template base para aplicações frontend utilizando:
 
