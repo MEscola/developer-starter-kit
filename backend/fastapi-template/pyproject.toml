@@ -1,0 +1,65 @@
+[project]
+name = "fastapi-template"
+version = "0.1.0"
+description = "FastAPI starter kit"
+readme = "README.md"
+
+authors = [
+    { name = "Marcia", email = "marcia.escolastico@gmail.com" }
+]
+
+requires-python = ">=3.11"
+
+dependencies = [
+    "alembic>=1.18.5",
+    "fastapi[standard]>=0.141.1",
+    "psycopg[binary]>=3.3.4",
+    "pydantic-settings>=2.14.2",
+    "python-dotenv>=1.2.2",
+    "sqlalchemy>=2.0.51",
+    "uvicorn[standard]>=0.52.0",
+]
+
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "isort>=8.0.1",
+    "pre-commit>=4.6.1",
+    "pytest>=9.1.1",
+    "ruff>=0.16.0",
+]
+
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP"
+]
+
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]
+
+testpaths = [
+    "tests"
+]
