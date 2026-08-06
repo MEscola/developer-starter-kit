@@ -1,0 +1,206 @@
+# DevOps
+
+Este diretório reúne templates, exemplos e ferramentas para padronizar a infraestrutura dos projetos criados com o **Developer Starter Kit**.
+
+O objetivo é acelerar a configuração de ambientes de desenvolvimento, integração contínua (CI), containers, deploy e infraestrutura, utilizando boas práticas adotadas no mercado.
+
+> **Importante**
+>
+> Os arquivos deste diretório são **templates reutilizáveis**. Eles não são executados diretamente neste repositório. Copie apenas os arquivos necessários para o seu projeto.
+
+---
+
+## Estrutura
+
+```text
+devops/
+├── docker/
+├── github/
+├── github-actions/
+├── nginx/
+├── scripts/
+├── terraform/
+├── examples/
+├── Makefile
+└── README.md
+```
+
+---
+
+## Docker
+
+Contém templates relacionados à conteinerização da aplicação.
+
+Exemplos:
+
+- Dockerfile
+- Dockerfile.dev
+- docker-compose.yml
+- docker-compose.prod.yml
+- .dockerignore
+
+Esses arquivos servem como base para aplicações Python, Node.js, React, Next.js ou outras stacks.
+
+---
+
+## GitHub
+
+Arquivos específicos do GitHub.
+
+Atualmente:
+
+- `dependabot.yml`
+
+O Dependabot verifica automaticamente se existem novas versões das dependências utilizadas pelo projeto e cria Pull Requests de atualização quando necessário.
+
+---
+
+## GitHub Actions
+
+Templates de workflows para GitHub Actions.
+
+Estrutura:
+
+```text
+github-actions/
+├── basic/
+├── docker/
+└── release/
+```
+
+### basic
+
+Pipelines básicos de CI.
+
+Exemplos:
+
+- FastAPI
+- Next.js
+- React
+
+### docker
+
+Workflows relacionados ao Docker.
+
+Exemplos:
+
+- Build da imagem
+- Publicação em registries (Docker Hub / GHCR)
+
+### release
+
+Workflows relacionados ao versionamento.
+
+Exemplos:
+
+- Criação de Releases
+- Geração automática de changelog
+
+---
+
+## Nginx
+
+Templates para utilização do Nginx como Reverse Proxy.
+
+Pode ser utilizado para:
+
+- direcionar requisições para frontend e backend;
+- servir arquivos estáticos;
+- configurar HTTPS;
+- realizar balanceamento de carga.
+
+---
+
+## Terraform
+
+Templates de infraestrutura como código (IaC).
+
+Destinado à criação de recursos em provedores de nuvem como AWS, Azure e OCI.
+
+---
+
+## Scripts
+
+Scripts auxiliares para automação de tarefas.
+
+Exemplos:
+
+- deploy
+- backup
+- restore
+- healthcheck
+- wait-for-db
+
+---
+
+## Examples
+
+Projetos de exemplo mostrando como integrar diferentes componentes da infraestrutura.
+
+Exemplo:
+
+```text
+examples/
+└── next-fastapi/
+```
+
+Este exemplo demonstra uma arquitetura completa utilizando:
+
+- Next.js
+- FastAPI
+- PostgreSQL
+- Nginx
+- Docker Compose
+
+O objetivo é mostrar como utilizar os templates deste diretório em conjunto.
+
+---
+
+## Makefile
+
+Contém comandos úteis para facilitar a utilização do Docker Compose.
+
+
+| Comando        | Descrição                                             |
+| -------------- | ----------------------------------------------------- |
+| `make up`      | Inicia os containers em segundo plano                 |
+| `make down`    | Para e remove os containers                           |
+| `make build`   | Constrói as imagens Docker                            |
+| `make logs`    | Exibe os logs dos containers                          |
+| `make ps`      | Lista os containers em execução                       |
+| `make restart` | Reinicia os containers                                |
+| `make clean`   | Remove containers, volumes e órfãos                   |
+| `make pull`    | Atualiza imagens utilizadas pelo Docker Compose       |
+| `make config`  | Valida e exibe a configuração final do Docker Compose |
+| `make images`  | Lista as imagens Docker disponíveis localmente        |
+
+
+---
+
+## Fluxo recomendado
+
+1. Escolha os templates de frontend e backend.
+2. Copie os templates Docker necessários.
+3. Adicione os workflows do GitHub Actions.
+4. Configure o Dependabot.
+5. Utilize um dos exemplos como referência para integração da infraestrutura.
+
+---
+
+## Roadmap
+
+Itens planejados para futuras versões do Starter Kit:
+
+- Templates para Kubernetes
+- Templates para GitHub Container Registry (GHCR)
+- Templates para AWS ECS
+- Templates para Docker Swarm
+- Templates para observabilidade (Prometheus/Grafana)
+- Templates para Nginx com HTTPS
+- Templates para Traefik
+
+---
+
+## Licença
+
+Este diretório faz parte do projeto **Developer Starter Kit** e segue a mesma licença definida para o repositório.

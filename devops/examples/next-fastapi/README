@@ -1,0 +1,41 @@
+# Este exemplo demonstra apenas a infraestrutura Docker. O código da aplicação não faz parte deste diretório. Utilize os templates de frontend e backend deste Starter Kit para montar um projeto completo.
+
+# Next.js + FastAPI Example
+
+Este exemplo demonstra como integrar uma aplicação Next.js com um backend FastAPI utilizando Docker Compose.
+
+## Arquitetura
+
+Internet
+↓
+Nginx
+├── Frontend (Next.js)
+└── Backend (FastAPI)
+        │
+        ▼
+    PostgreSQL
+
+## Containers
+
+- frontend
+- backend
+- postgres
+- nginx
+
+## Executando
+
+docker compose up
+
+## Acessos
+
+Frontend
+
+http://localhost
+
+API
+
+http://localhost/api
+
+Banco
+
+localhost:5432

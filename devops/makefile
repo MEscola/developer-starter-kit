@@ -1,4 +1,4 @@
-.PHONY: up down build logs ps restart clean pull
+.PHONY: up down build logs ps restart clean pull config images
 
 up:
 	docker compose up -d

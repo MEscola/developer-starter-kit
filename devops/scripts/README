@@ -1,0 +1,11 @@
+# Scripts
+
+Esta pasta armazenará scripts reutilizáveis para automação de tarefas comuns, como:
+
+- deploy
+- backup
+- restore
+- healthcheck
+- wait-for-db
+
+Os scripts serão adicionados conforme forem utilizados em projetos reais.
