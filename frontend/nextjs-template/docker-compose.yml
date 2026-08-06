@@ -1,17 +1,56 @@
+version: "3.9"
+
 services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./backend:/app
+
+    env_file:
+      - .env
+
+    depends_on:
+      - db
+
   frontend:
-    container_name: nextjs-template
-
-    build: .
-
-    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
 
     ports:
       - "3000:3000"
 
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./frontend:/app
 
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:17-alpine
+
+    restart: always
+
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
