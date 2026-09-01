@@ -1,0 +1,20 @@
+# Terraform
+
+Diretório reservado para templates e configurações de infraestrutura como código utilizando Terraform.
+
+Os templates serão adicionados conforme forem definidos casos de uso reais para o Starter Kit.
+
+## Objetivo
+
+Fornecer uma base reutilizável para provisionamento de infraestrutura, evitando configurações específicas de um projeto ou ambiente.
+
+## Futuras possibilidades
+
+* Templates para infraestrutura em cloud
+* Configuração de providers
+* Estrutura de módulos Terraform
+* Variáveis e outputs
+* Boas práticas de organização
+* Integração com CI/CD
+
+> Nenhuma configuração de infraestrutura específica de um projeto deve ser adicionada diretamente neste diretório.
