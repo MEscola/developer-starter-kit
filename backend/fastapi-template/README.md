@@ -15,7 +15,6 @@ O objetivo deste template é fornecer uma estrutura inicial padronizada para nov
 * Uvicorn
 * pytest
 * Ruff
-* Black
 * uv
 * Docker
 * Docker Compose
@@ -24,20 +23,20 @@ O objetivo deste template é fornecer uma estrutura inicial padronizada para nov
 
 ```text
 fastapi-template/
-├── alembic/                 # Migrations do banco
-│   ├── versions/            # Migrations geradas
+├── alembic/                  # Migrations do banco
+│   ├── versions/             # Migrations geradas
 │   ├── env.py
 │   └── script.py.mako
 ├── app/
-│   ├── core/                # Configurações da aplicação
+│   ├── core/                 # Configurações da aplicação
 │   │   └── config.py
-│   ├── db/                  # Configuração do banco
+│   ├── db/                   # Configuração do banco
 │   │   ├── base.py
 │   │   └── session.py
-│   └── main.py              # Entrada da aplicação
-├── docs/                    # Documentação complementar
-├── tests/                   # Testes automatizados
-├── .env.example             # Exemplo de variáveis de ambiente
+│   └── main.py               # Entrada da aplicação
+├── docs/                     # Documentação complementar
+├── tests/                    # Testes automatizados
+├── .env.example              # Exemplo de variáveis de ambiente
 ├── Dockerfile
 ├── Dockerfile.dev
 ├── docker-compose.yml
@@ -49,7 +48,7 @@ fastapi-template/
 ## Pré-requisitos
 
 * Python 3.11 ou superior
-* [uv](https://docs.astral.sh/uv/)
+* uv
 * Docker
 * Docker Compose
 
@@ -71,11 +70,13 @@ SECRET_KEY=change-me
 ENVIRONMENT=development
 ```
 
-> Se a porta `5432` já estiver sendo utilizada por outro PostgreSQL local, altere a porta publicada no `docker-compose.yml` e utilize a mesma porta no `DATABASE_URL`.
+> A porta `5432` é a configuração padrão do template. Se ela já estiver sendo utilizada por outro PostgreSQL no ambiente local, altere a porta publicada no `docker-compose.yml` e utilize a mesma porta no `DATABASE_URL`.
+
+O arquivo `.env` não deve ser versionado. Utilize o `.env.example` para documentar as variáveis necessárias.
 
 ## Instalação
 
-Instale as dependências com:
+Instale e sincronize as dependências:
 
 ```bash
 make install
@@ -109,7 +110,7 @@ Para verificar os containers:
 docker compose ps
 ```
 
-Para parar o banco:
+Para parar os containers:
 
 ```bash
 docker compose down
@@ -176,6 +177,8 @@ uv run pytest
 
 ### Ruff
 
+Execute a verificação de lint:
+
 ```bash
 make lint
 ```
@@ -188,11 +191,13 @@ uv run ruff check .
 
 ### Formatação
 
+Formate o código e corrija problemas simples de lint:
+
 ```bash
 make format
 ```
 
-O comando executa a formatação com Ruff e corrige problemas simples de lint.
+O comando utiliza o Ruff para formatação e correção automática de problemas de lint.
 
 ### Verificação completa
 
@@ -204,7 +209,7 @@ make check
 
 Esse comando executa:
 
-1. Ruff
+1. Verificação do Ruff
 2. Verificação de formatação
 3. Testes automatizados
 
@@ -250,27 +255,33 @@ ou:
 uv run alembic downgrade -1
 ```
 
-As migrations ficam armazenadas em:
+As migrations são armazenadas em:
 
 ```text
 alembic/versions/
 ```
 
+Esses arquivos fazem parte do código do projeto e devem ser versionados no Git.
+
 ## Docker
 
-Construir a imagem:
+O template possui um `Dockerfile` para execução da aplicação em container.
+
+### Construir a imagem
 
 ```bash
 docker build -t fastapi-template .
 ```
 
-Executar:
+### Executar o container
 
 ```bash
 docker run -p 8000:8000 fastapi-template
 ```
 
-## Comandos do Makefile
+> O comando acima executa somente a API. Para uma aplicação que depende do PostgreSQL, configure a conexão com o banco conforme o ambiente de execução ou utilize o Docker Compose.
+
+## Makefile
 
 | Comando                    | Descrição                             |
 | -------------------------- | ------------------------------------- |
@@ -289,22 +300,13 @@ docker run -p 8000:8000 fastapi-template
 
 ## Documentação
 
-Documentações complementares estão disponíveis em:
+Documentações complementares podem ser adicionadas no diretório:
 
 ```text
 docs/
 ```
 
-Incluindo informações sobre:
-
-* API
-* Arquitetura
-* Banco de dados
-* Desenvolvimento
-* Docker
-* Deploy
-* Release
-* Roadmap
+A documentação deve ser expandida conforme novas necessidades do template forem identificadas.
 
 ## Licença
 
